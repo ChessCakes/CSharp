@@ -1,0 +1,194 @@
+ /*Escribe un programa en C# para crear una calculadora simple. El programa debe realizar lo siguiente:
+            a)Mostrar un menu con las operaciones disponibles: suma, resta, multiplicacion y division 
+            b)Solicitar al usuario que seleccione una operacion ingresando un numero correspondiente a la
+              opcion del menu. 
+            c)Solicitar al usuario que ingrese dos numeres sobre los cuales se realizara la operacion 
+            d)Realizar la operacion seleccionada por el usuario y mostrar el resultado 
+            e)Preguntar al usuario si desea realizar otra operacion o salir del programa
+            
+ Consideraciones adicionales:
+            *Asegurate de manejar errores y excepciones, como divisiones entre cero o entradas no numericas 
+            *Puedes implentar una funcion para cada operacion y luego llamar a la funcion correspondiente segun
+             la eleccion del usuario
+            *Utiliza una estructura de bucle para permitir que el usuario realice varias operaciones hasta que
+             decida salir*/
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+           
+            //declaracion de variables
+            int opcion = 0;
+            string decision = "";
+            string pantalla = "";
+            float N1, N2;
+            double division=0, multiplicacion=0, resta=0, suma=0, resultado=0;
+            //inicio de nuestro ciclo para realizar infinitas operaciones
+            do
+            {
+                //creacion del menu de opciones
+
+            Console.WriteLine("********M E N U********");
+            Console.WriteLine("1. Suma");
+            Console.WriteLine("2. Resta");
+            Console.WriteLine("3. Multiplicacion");
+            Console.WriteLine("4. Division");
+
+            //Mensaje en pantalla para que el usuario realice una toma de opcion
+            Console.Write("\nQue opcion deseas elegir? ");
+            opcion = int.Parse(Console.ReadLine());
+          
+          
+
+           
+                //inicio de condicionales para el menu
+
+                if (opcion == 1) //OPCION SUMA
+                {
+                    //mensaje para menu de suma
+                    Console.WriteLine("Estas en la opcion de suma\n\n");
+                    //peticion de numeros para el usuario
+                    Console.Write("Ingresa un numero: ");
+                    N1 = float.Parse(Console.ReadLine());
+                    Console.Write("Ingresa otro numero: ");
+                    N2 = float.Parse(Console.ReadLine());
+
+                    //proceso de la suma
+                    suma = N1 + N2;
+
+                    //mensaje resultado
+                    Console.WriteLine("Tu resultado es " + suma);
+
+                }
+                else if (opcion == 2) //opcion resta
+                {
+                    //mensaje para menu de resta
+                    Console.WriteLine("Estas en la opcion de resta\n\n");
+                    //peticion de numeros para el usuario
+                    Console.Write("Ingresa un numero: ");
+                    N1 = float.Parse(Console.ReadLine());
+                    Console.Write("Ingresa otro numero: ");
+                    N2 = float.Parse(Console.ReadLine());
+
+                    //proceso de la resta
+                    resta = N1 - N2;
+
+                    //mensaje de resultado
+                    Console.WriteLine("Tu resultado es " + resta);
+                }
+                else if (opcion == 3)//opcion multiplicacion
+                {
+                    //mensaje para menu de multiplicacion
+                    Console.WriteLine("Estas en la opcion de multiplicacion\n\n");
+                    //peticion de numeros para el usuario
+                    Console.Write("Ingresa un numero: ");
+                    N1 = float.Parse(Console.ReadLine());
+                    Console.Write("Ingresa otro numero: ");
+                    N2 = float.Parse(Console.ReadLine());
+
+                    if (N1 == 0 || N2 == 0) //caso de un digito 0
+                    {
+                        Console.WriteLine("Cualquier numero multiplicado por 0 es cero");
+                    }
+                    else
+                    {
+                        //proceso de la multiplicacion
+                        resultado = N1 * N2;
+
+                        Console.WriteLine("Tu resultado es " + resultado);
+                    }
+
+                }
+                else if (opcion == 4)//division
+                {
+                    //mensaje para menu de division
+                    Console.WriteLine("Estas en la opcion de division");
+                    //mensaje en pantalla para mostrar como sera la division
+                    Console.WriteLine("La division sera asi: N1 / N2");
+
+                    //peticion de numeros para el usuario
+                    Console.Write("Ingresa un numero(N1): ");
+                    N1 = float.Parse(Console.ReadLine());
+                    Console.Write("Ingresa otro numero(N2): ");
+                    N2 = float.Parse(Console.ReadLine());
+
+                    /*Caso decision para dividir
+                     declarar nueva variable
+                    int decision=0;
+
+                    mensaje en pantalla para decidir como dividir los numeros
+                    Console.WriteLine("Como deseas dividir tus numeros?");
+                    Console.WriteLine("1. N1 / N2");
+                    Console.WriteLine("2. N2 / N1");
+
+                    decision = int.Parse(Console.ReadLine());
+
+                    if(decision== 1){
+                           if(N1 == 0)
+                    {
+                        Console.WriteLine("0 divido por cualquier numero es 0");
+                    }
+                    else if(N2 == 0)
+                    {
+                        Console.WriteLine("Un numero divido entre 0 tiende a infinto");
+                    }else{
+                        division = N1/N2;
+                    }
+                     else{
+                    if(N2 == 0)
+                    {
+                        Console.WriteLine("0 divido por cualquier numero es 0");
+                    }
+                    else if(N1 == 0)
+                    {
+                        Console.WriteLine("Un numero divido entre 0 tiende a infinto");
+                    }
+
+                        division = N2/N1;
+                    {
+                     */
+
+                    //caso 0
+                    if (N1 == 0)
+                    {
+                        Console.WriteLine("0 divido por cualquier numero es 0");
+                    }
+                    else if (N2 == 0)
+                    {
+                        Console.WriteLine("Un numero divido entre 0 tiende a infinto");
+                    }
+                    else
+                    {
+                        resultado = N1 / N2;
+
+                        Console.WriteLine("Tu resultado es " + resultado);
+                    }
+                }
+                //pregunta para el usuario en caso de que quiera realizar otra operacion
+                Console.WriteLine("\nDeseas realizar otra operacion?(Si/No) ");
+                decision = Console.ReadLine();
+
+                //limpiar pantalla opcional
+                Console.WriteLine("Quieres limpiar tu pantalla? ");
+                pantalla = Console.ReadLine();
+                if (pantalla == "si" || pantalla == "SI" || pantalla == "Si" || pantalla == "sI"
+                || pantalla == "sí" || pantalla == "SÍ" || pantalla == "Sí" || pantalla == "sÍ")
+                {
+                    Console.Clear();
+                }
+                else
+                {
+                    Console.WriteLine("a sos re trol\n\n");
+                }
+
+            }
+            //Janeth fue mamoncita y hizo de 4 opciones 8 opciones posibles
+            while (decision == "si" || decision == "SI" || decision == "Si" || decision == "sI"
+                || decision == "sí" || decision == "SÍ" || decision == "Sí" || decision == "sÍ");
+            //mensaje de despedida
+            Console.WriteLine("Bye Bye~");
+        }
+    }
+}
